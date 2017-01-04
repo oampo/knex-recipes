@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.post('/recipes', (req, res) => {
     const requiredFields = ['name', 'description', 'steps'];
 
-    let missingIndex = requiredFields.findIndex(field => !req.body[field]);
+    const missingIndex = requiredFields.findIndex(field => !req.body[field]);
     if (missingIndex != -1) {
         return res.status(400).json({
             message: `Missing field: ${requiredFields[missingIndex]}`
